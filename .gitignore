@@ -25,6 +25,7 @@ replay_pid*
 # Environment
 .env
 .env.*
+!.env.example
 
 # Mac
 .DS_Store

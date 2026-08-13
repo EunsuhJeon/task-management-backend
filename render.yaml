@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: task-management-backend
+    runtime: java
+    plan: free
+    buildCommand: ./gradlew bootJar -x test
+    startCommand: java -jar build/libs/task-management-backend-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+      - key: APP_SEED_ENABLED
+        value: "true"
+      - key: JPA_DDL_AUTO
+        value: update
+      - key: JPA_SHOW_SQL
+        value: "false"
+      # Set DATABASE_URL / USERNAME / PASSWORD from your Render Postgres
