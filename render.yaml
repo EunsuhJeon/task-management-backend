@@ -1,10 +1,9 @@
 services:
   - type: web
     name: task-management-backend
-    runtime: java
+    runtime: docker
     plan: free
-    buildCommand: ./gradlew bootJar -x test
-    startCommand: java -jar build/libs/task-management-backend-0.0.1-SNAPSHOT.jar
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: JWT_SECRET
         generateValue: true

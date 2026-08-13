@@ -130,10 +130,12 @@ See `.env.example`.
 
 ## Deploy (Render)
 
+Render Web Service **does not offer a Java runtime** — use **Docker** (this repo includes a `Dockerfile`).
+
 1. Create a **PostgreSQL** instance on Render.
 2. Create a **Web Service** from this repo.
-   - Build: `./gradlew bootJar`
-   - Start: `java -jar build/libs/*SNAPSHOT.jar` (or the generated jar name)
+   - **Language**: `Docker`
+   - Dockerfile path: `./Dockerfile` (default)
 3. Set env vars:
    - `DATABASE_URL` = JDBC URL (`jdbc:postgresql://...`)
    - `DATABASE_USERNAME` / `DATABASE_PASSWORD`
@@ -143,7 +145,7 @@ See `.env.example`.
    - `APP_SEED_ENABLED=true` (optional, first boot only)
 4. Confirm health by calling `/api/auth/login`.
 
-`render.yaml` is included as a starting blueprint — adjust the jar name after the first build if needed.
+`render.yaml` uses `runtime: docker`.
 
 ## Interview one-liner
 
